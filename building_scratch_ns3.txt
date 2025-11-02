@@ -1,0 +1,82 @@
+Perfect — this is a **very common mistake** when running ns-3 programs.
+Let’s fix it properly 👇
+
+---
+
+### ⚙️ Problem:
+
+You ran:
+
+```bash
+./ns3 run "scratch/gobackn-arq.cc"
+```
+
+But `./ns3` expects the **program name (without `.cc`)**, **not the file name**.
+
+---
+
+### ✅ Correct command:
+
+If your file is located at:
+
+```
+scratch/gobackn-arq.cc
+```
+
+then the correct command is:
+
+```bash
+./ns3 run "scratch/gobackn-arq"
+```
+
+---
+
+### 🧩 If you just created it, follow the complete workflow:
+
+1. Move into your ns-3 directory:
+
+   ```bash
+   cd ~/ns-allinone-3.41/ns-3.41
+   ```
+2. Verify your file exists:
+
+   ```bash
+   ls scratch | grep gobackn
+   ```
+
+   or if it’s in a subfolder:
+
+   ```bash
+   ls scratch/gobackn-arq.cc
+   ```
+3. Build ns-3 to compile your scratch program:
+
+   ```bash
+   ./ns3 build
+   ```
+4. Run it:
+
+   ```bash
+   ./ns3 run "scratch/gobackn-arq"
+   ```
+
+---
+
+### ⚠️ Extra tip:
+
+If you want to see the **NetAnim output**, make sure your code includes:
+
+```cpp
+AnimationInterface anim("gobackn-arq.xml");
+```
+
+Then after the run, open it with:
+
+```bash
+netanim gobackn-arq.xml
+```
+
+---
+
+Would you like me to give you a **ready-to-run Go-Back-N ARQ ns-3 example** (fully working with animation)?
+You can just paste it into `scratch/gobackn-arq.cc` and run immediately.
